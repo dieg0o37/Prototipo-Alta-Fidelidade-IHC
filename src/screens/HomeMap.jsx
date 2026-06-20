@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Menu, Plus, Layers, Crosshair, Mic, ChevronUp, ChevronDown, Sparkles } from 'lucide-react'
+import { Menu, Plus, Layers, Crosshair, Mic, ChevronUp, ChevronDown, Sparkles, History } from 'lucide-react'
 import { useApp } from '../context/AppState.jsx'
 import { DESTINATION } from '../data.js'
 import MapCanvas from '../components/MapCanvas.jsx'
@@ -29,6 +29,10 @@ export default function HomeMap() {
             {open && (
               <div className="dest-body">
                 <div className="muted" style={{ fontSize: 13 }}>{DESTINATION.address}</div>
+                <div className="row gap-8" style={{ fontSize: 13, fontWeight: 600 }}>
+                  <History size={14} className="muted" />
+                  <span>Você já entregou aqui <b>{DESTINATION.timesDelivered}×</b></span>
+                </div>
                 <div className="ai-row">
                   <Sparkles size={16} style={{ flexShrink: 0, marginTop: 1 }} className="muted" />
                   <span><b>Resumo IA: </b>{DESTINATION.aiSummary}</span>

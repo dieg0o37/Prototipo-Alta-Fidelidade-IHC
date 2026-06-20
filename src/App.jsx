@@ -8,12 +8,12 @@ import ReportDone from './screens/ReportDone.jsx'
 import Voice from './screens/Voice.jsx'
 import ProximityAlert from './screens/ProximityAlert.jsx'
 import AltRoute from './screens/AltRoute.jsx'
-import Validate from './screens/Validate.jsx'
-import ValidateDone from './screens/ValidateDone.jsx'
+import LiveValidate from './screens/LiveValidate.jsx'
 import Panic from './screens/Panic.jsx'
 import EmergencyChat from './screens/EmergencyChat.jsx'
 import SideMenu from './screens/SideMenu.jsx'
 import History from './screens/History.jsx'
+import RestAlert from './screens/RestAlert.jsx'
 
 const SCREENS = {
   home: HomeMap,
@@ -22,12 +22,12 @@ const SCREENS = {
   voice: Voice,
   alert: ProximityAlert,
   altRoute: AltRoute,
-  validate: Validate,
-  validateDone: ValidateDone,
+  validate: LiveValidate,
   panic: Panic,
   chat: EmergencyChat,
   menu: SideMenu,
   history: History,
+  rest: RestAlert,
 }
 
 /* Dock fora do celular — só para navegar o protótipo / capturar telas.
@@ -41,6 +41,7 @@ const DOCK = [
   ['voice', 'Voz'],
   ['panic', 'Pânico'],
   ['chat', 'Chat SOS'],
+  ['rest', 'Descanso'],
   ['menu', 'Menu'],
   ['history', 'Histórico'],
 ]

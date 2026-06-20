@@ -84,11 +84,16 @@ Botões primários ≥ **64 px**; botão de pânico ≥ **88 px**; corpo de text
 apontava a trepidação como fator crítico para dimensionar alvos de toque. 64 px supera o
 mínimo de 48 dp do Material Design.
 
-### D10. Sem scroll vertical nas telas primárias; sem pop-ups pequenos
-Mapa, alerta de aproximação, validação e pânico cabem **sem rolagem**. Alertas críticos usam
-**overlay de tela cheia / bordas**, não pop-ups pequenos. Listas longas (histórico) ficam só
-em telas secundárias. **Por quê:** restrição Sintática da Fase 1 (sem scroll, sem pop-ups,
-sem menus escondidos em fluxos críticos).
+### D10. Sem scroll vertical nas telas primárias; distinção crítico × passivo
+Mapa, alerta de aproximação e pânico cabem **sem rolagem**. Distinção importante:
+- **Alertas críticos** (área de risco, pânico) usam **overlay de tela cheia / bordas** com
+  redundância total — exigem atenção e não somem sozinhos.
+- **Interações passivas/não-críticas** (validar se um alagamento ainda existe) usam um
+  **pop-up transitório estilo Waze**, no canto, que **nunca bloqueia o mapa** e **some sozinho**
+  se ignorado (ver D21).
+Listas longas (histórico) ficam só em telas secundárias. **Por quê:** a restrição Sintática
+da Fase 1 (sem pop-ups que atrapalhem) vale para fluxos críticos; pedir confirmação não pode
+custar atenção de quem dirige — daí o pop-up passivo e efêmero.
 
 ### D11. Idioma pt-BR
 Toda a UI em português do Brasil. **Por quê:** o público-alvo são motoboys brasileiros
@@ -105,11 +110,12 @@ A tela de Histórico por local mostra um **resumo gerado por IA** dos relatos (e
 costuma atrasar; relatos de tratamento hostil à noite"). **Por quê:** materializa a ideia da
 Fase 1 de "IA que resume relatos para alertar futuros entregadores".
 
-### D14. Funcionalidades prototipadas (10 telas = requisitos das Fases 1/2)
-1. Mapa principal (riscos + zonas de calor) · 2. Ações rápidas "+" · 3. Denúncia por
-categorias · 4. Comando de voz · 5. Alerta de aproximação (acessibilidade) · 6. Rota
-alternativa · 7. Validação por crowdsourcing · 8. Pânico silencioso · 9. Chat de emergência
-pré-configurado · 10. Menu/configurações + Histórico por local com mapa de calor.
+### D14. Funcionalidades prototipadas (requisitos das Fases 1/2)
+1. Mapa principal (riscos + zonas de calor + dropdown de destino) · 2. Ações rápidas "+" ·
+3. Denúncia por categorias · 4. Comando de voz · 5. Alerta de aproximação (acessibilidade) ·
+6. Rota alternativa · 7. Validação por crowdsourcing (pop-up Waze, D21) · 8. Pânico silencioso ·
+9. Chat de emergência pré-configurado · 10. Menu (estatísticas, integração, tema,
+acessibilidade) + Histórico por local · 11. Aviso de descanso/overworking (D23).
 
 ### D15. Itens de UI auxiliares (preenchimento realista)
 "Central 190", contagem de relatos, distâncias e tempos são **dados fictícios de
@@ -143,6 +149,37 @@ acompanhamento de trabalho e, principalmente, cria um **mecanismo de controle de
 evitar overworking** — diálogo direto com o problema da Fase 1 (uberização, jornadas de 12h+,
 fadiga como fator de risco). São dados ilustrativos, sem persistência.
 
+### D21. Validação por crowdsourcing no estilo Waze (pop-up transitório) — *nova (mudança vs. versão anterior)*
+A validação deixou de ser uma **tela cheia que obrigava a responder** e virou um **pop-up
+transitório** sobre o mapa, no **canto inferior esquerdo**, exibido **depois que o usuário já
+passou** pelo ponto (alagamento). Ele dá ~6 s (com **barra de contagem** e **vibração** ao
+surgir), aceita Sim/Não em um toque e **desaparece sozinho** se ignorado. **Removemos a tela
+de "obrigado por votar"** — basta uma micro-confirmação que também some.
+**Por quê / por que é melhor:** replica o modelo mental do Waze (referência citada na Fase 1),
+respeita a atenção de quem dirige (responder é opcional e nunca bloqueia o mapa) e mantém o
+crowdsourcing vivo sem fricção. A tela cheia anterior violava a ideia de "validação sem
+esforço" da Fase 1. É uma tela **isolada do resto do app** (`LiveValidate.jsx`).
+
+### D22. "Entregas neste destino" movida para o contexto do destino — *nova*
+A estatística "entregas neste destino" saiu da aba de perfil (onde o destino nem aparece) e
+foi para **logo abaixo do endereço, no dropdown de destino** ("Você já entregou aqui 14×").
+**Por quê:** a informação só faz sentido ao lado do destino a que se refere; no perfil ficava
+descontextualizada.
+
+### D23. Aviso amigável de descanso (controle de overworking) — *nova*
+Nova tela (`RestAlert.jsx`) **acionada (teoricamente) pelo Controle de Jornada** quando o
+usuário ultrapassa a meta saudável de horas. É um **lembrete de autocuidado** ("Hora de
+descansar?"), com vibração, que **não força parar nem fecha o app** — oferece "Encerrar o dia"
+ou "Continuar trabalhando". **Por quê:** transforma o stat tracker (D19) em ação concreta de
+saúde do trabalhador, sem paternalismo; a decisão continua sendo do motoboy.
+
+### D24. Correções de fidelidade — *ajuste vs. versão anterior*
+- **Marcadores desenhados dentro do próprio SVG** do mapa (mesmo sistema de coordenadas das
+  ruas), garantindo que os pinos fiquem **exatamente sobre as vias** em qualquer tamanho de
+  tela (antes ficavam deslocados por usarem coordenadas em px sobre um SVG escalado).
+- Badges com `white-space: nowrap` (sem quebra) e **texto correto no modo noturno** em
+  linhas que são botões (ex.: "Histórico por local") via `color: inherit`.
+
 ---
 
 ## 3. Pontos para a análise → *Seção 3 (Análise de Resultados)*
@@ -153,6 +190,10 @@ fadiga como fator de risco). São dados ilustrativos, sem persistência.
   (resolve o dilema da Fase 2: "alertar quem não ouve sem estressar quem ouve").
 - A síntese do botão de pânico (D6) demonstra como a interface equilibra
   *simplicidade × imediatismo* — a tensão de design central do projeto.
+- A validação efêmera (D21) mostra que o crowdsourcing pode ser mantido **sem custar
+  atenção** de quem dirige — confirmar é opcional e nunca bloqueia a navegação.
+- O controle de jornada + aviso de descanso (D19/D23) amplia o escopo de "segurança" para
+  incluir **saúde e fadiga**, atacando uma causa-raiz da Fase 1 (overworking da uberização).
 - Pontos a validar com usuários reais em fases seguintes: legibilidade efetiva sob sol;
   taxa de acionamento acidental do pânico mesmo com a contagem regressiva; carga cognitiva
   do mapa com muitos alertas simultâneos.

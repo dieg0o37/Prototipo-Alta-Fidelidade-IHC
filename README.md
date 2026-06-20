@@ -24,12 +24,13 @@ Build de produção: `npm run build` · pré-visualizar build: `npm run preview`
 - A **barra de botões abaixo do celular** (Mapa, Alerta de risco, Rota segura, …) serve só
   para pular entre as telas e capturar screenshots — **não faz parte do app**.
 - **Jornada do Lucas** (storyboard da Fase 2), na ordem:
-  **Mapa → Alerta de risco → (Desviar) → Rota segura → Validação**.
+  **Mapa → Alerta de risco → (Desviar) → Rota segura → Validação** (pop-up Waze; responder é
+  opcional — some sozinho em ~6 s).
 - O **toggle dia/noite** (sol/lua) fica no **Menu → Aparência**.
 - O topo do mapa traz um **dropdown de destino** (aberto por padrão) com o resumo por IA das
   ocorrências do local; o destino vem "sincronizado" da **integração iFood** (Menu).
 
-## Telas (10)
+## Telas (11)
 
 | # | Tela | Requisito atendido |
 |---|------|--------------------|
@@ -39,16 +40,17 @@ Build de produção: `npm run build` · pré-visualizar build: `npm run preview`
 | 4 | Comando de voz | reportar sem tirar as mãos do guidão |
 | 5 | Alerta de aproximação | notificação visual + háptica (acessibilidade) |
 | 6 | Rota alternativa | desvio de área de risco |
-| 7 | Validação (crowdsourcing) | confirmar alerta com 1 toque |
+| 7 | Validação (crowdsourcing) | pop-up transitório estilo Waze, some sozinho (não bloqueia) |
 | 8 | Pânico silencioso | acionar rede de apoio sem som local |
 | 9 | Chat de emergência | mensagens pré-configuradas (def. auditiva/fala) |
 | 10 | Menu + Histórico | estatísticas de jornada, integração iFood, tema, acessibilidade, histórico + resumo por IA |
+| 11 | Aviso de descanso | lembrete amigável de overworking (não força parar) |
 
 ## Capturando telas para o relatório
 
 1. `npm run dev`.
 2. Selecione a tela na barra inferior (ou siga a jornada do Lucas).
-3. Alterne dia/noite no Mapa para registrar os dois temas.
+3. Alterne dia/noite em **Menu → Aparência** para registrar os dois temas.
 4. Capture a área da **moldura do celular** (recomenda-se viewport ~460×1000).
 
 ## Stack

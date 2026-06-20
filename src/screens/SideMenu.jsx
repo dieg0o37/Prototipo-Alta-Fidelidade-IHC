@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { Flame, Vibrate, Eye, Volume2, History, User, ChevronRight, Clock, Utensils } from 'lucide-react'
+import { Flame, Vibrate, Eye, Volume2, History, User, ChevronRight, Clock, Utensils, BedDouble } from 'lucide-react'
 import { useApp } from '../context/AppState.jsx'
 import { TopBar, ThemeSwitch } from '../components/ui.jsx'
-import { STATS, DESTINATION } from '../data.js'
+import { STATS } from '../data.js'
 
 /* Menu lateral — perfil/estatísticas, integrações, configurações e acessibilidade.
    Mantém a tela principal limpa. */
@@ -49,8 +49,6 @@ export default function SideMenu() {
         <div className="stats-grid" style={{ marginBottom: 12 }}>
           <Stat num={STATS.totalRides.toLocaleString('pt-BR')} lbl="corridas no total" />
           <Stat num={STATS.today} lbl="entregas hoje" />
-          <Stat num={STATS.timesAtDestination ?? DESTINATION.timesDelivered} lbl="entregas neste destino" />
-          <Stat num={STATS.hoursLabel} lbl="horas hoje" />
         </div>
         <div className="jornada" style={{ marginBottom: 6 }}>
           <div className="row between">
@@ -61,6 +59,9 @@ export default function SideMenu() {
           <div className="muted" style={{ fontSize: 13, marginTop: 8 }}>
             {STATS.hoursLabel} trabalhadas hoje. {warn ? 'Considere uma pausa para evitar fadiga.' : 'Dentro de uma jornada saudável.'}
           </div>
+          <button className="big-btn outline" style={{ minHeight: 48, marginTop: 12 }} onClick={() => go('rest')}>
+            <BedDouble size={20} /> Ver aviso de descanso
+          </button>
         </div>
 
         {/* Integrações */}

@@ -73,7 +73,7 @@ body {
   color: #fff;
 }
 
-button { font-family: inherit; cursor: pointer; border: none; background: none; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
 
 /* ----------------- Moldura do celular (phone frame) ----------------- */
 .stage {
@@ -474,3 +474,66 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   background: var(--safe);
 }
 .jornada-bar.warn > i { background: var(--warning); }
+
+/* ----------------- Pulso do marcador (SVG) ----------------- */
+.pin-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: pin-ping 1.7s ease-out infinite;
+}
+@keyframes pin-ping {
+  0% { transform: scale(0.5); opacity: 0.55; }
+  100% { transform: scale(2.1); opacity: 0; }
+}
+
+/* ----------------- Toast transitório de validação (estilo Waze) ----------------- */
+.live-toast {
+  position: absolute; left: 14px; bottom: 120px; z-index: 65;
+  width: 230px;
+  background: var(--surface);
+  border: 2px solid var(--warning);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  animation: toast-in 0.25s ease;
+}
+.live-toast.out { animation: toast-out 0.35s ease forwards; }
+@keyframes toast-in { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+@keyframes toast-out { to { transform: translateY(14px); opacity: 0; } }
+.live-toast .lt-body { padding: 12px 14px; }
+.live-toast .lt-row { display: flex; align-items: center; gap: 10px; }
+.live-toast .lt-actions { display: flex; gap: 8px; margin-top: 12px; }
+.live-toast .lt-btn {
+  flex: 1; min-height: 48px; border-radius: 12px;
+  font-size: 15px; font-weight: 800; color: #fff;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.live-toast .lt-btn.yes { background: var(--safe); }
+.live-toast .lt-btn.no { background: var(--danger); }
+.live-countdown { height: 6px; background: var(--surface-2); }
+.live-countdown > i {
+  display: block; height: 100%; background: var(--warning);
+  animation: countdown linear forwards;
+}
+@keyframes countdown { from { width: 100%; } to { width: 0%; } }
+.live-confirm {
+  position: absolute; left: 14px; bottom: 120px; z-index: 65;
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 999px; padding: 12px 18px; box-shadow: var(--shadow);
+  display: flex; align-items: center; gap: 8px; font-weight: 800;
+  animation: toast-in 0.2s ease;
+}
+
+/* ----------------- Aviso amigável de descanso (overwork) ----------------- */
+.rest-screen {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; padding: 28px; gap: 18px;
+  background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+}
+.rest-emoji {
+  width: 132px; height: 132px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--surface-2);
+}
