@@ -6,7 +6,6 @@ Inspirado no Waze, independente das plataformas de entrega, com alertas em tempo
 validação por crowdsourcing e foco em acessibilidade (motoboys com deficiência auditiva).
 
 > Decisões de design e justificativas: ver **[DECISIONS.md](./DECISIONS.md)** — é a fonte
-> para preencher o relatório `docs/fase-3/Fase 3.docx`.
 
 ## Como rodar
 
