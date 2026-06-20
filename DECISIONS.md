@@ -111,9 +111,49 @@ alternativa · 7. Validação por crowdsourcing · 8. Pânico silencioso · 9. C
 pré-configurado · 10. Menu/configurações + Histórico por local com mapa de calor.
 
 ### D15. Itens de UI auxiliares (preenchimento realista)
-Localização "Barão Geraldo, Campinas", "Central 190", contagem de relatos, distâncias e
-tempos são **dados fictícios de demonstração** para dar realismo às telas — não vêm de
-nenhuma base real.
+"Central 190", contagem de relatos, distâncias e tempos são **dados fictícios de
+demonstração** para dar realismo às telas — não vêm de nenhuma base real
+(centralizados em `src/data.js`).
+
+### D16. Integração com o iFood (visão aspiracional) — *nova*
+O menu traz **"Conectar conta iFood"**. O conceito ideal: ao aceitar uma corrida no iFood,
+o app **assume automaticamente a mesma rota**, porém sobreposta aos **alertas de segurança**
+da comunidade. No protótipo isso aparece como: integração ligada por padrão, **badge "iFood"**
+no destino e o destino já "sincronizado" no topo do mapa.
+**Por quê:** elimina retrabalho (o motoboy não redigita a rota) e leva a segurança para
+dentro do fluxo real de trabalho, sem competir com a plataforma.
+**Ressalva de viabilidade (honestidade acadêmica):** depende de API/parceria com o iFood que
+**pode não existir** ou ser restrita; está modelada como *visão de produto ideal*, não como
+funcionalidade garantida. Alternativa realista: captura via notificação/acessibilidade do
+sistema, a validar em fases futuras.
+
+### D17. Dropdown de destino + resumo IA no topo (substitui a localização estática) — *nova*
+O topo do mapa deixou de mostrar a localização atual ("Barão Geraldo, Campinas" — informação
+inútil) e passou a exibir um **dropdown (aberto por padrão)** com **nome do destino**,
+endereço, **resumo por IA das ocorrências** daquele local e um *pill* "4 alertas na rota ·
+AO VIVO". **Por quê:** o que importa para o motoboy é o **destino** e seus riscos conhecidos,
+não onde ele já está; materializa de novo a "IA que resume relatos" (Fase 1) no momento mais
+útil. É recolhível para liberar o mapa quando desejado.
+
+### D18. Toggle de tema movido para o menu — *nova (ajuste vs. 1ª versão)*
+O alternador dia/noite saiu de cima do mapa e foi para **Menu → Aparência**. **Por quê:**
+troca de tema é ação ocasional; tirá-la da tela principal reforça a base **Minimalista**
+(menos controles sobre o mapa) sem perder a função.
+
+### D19. *Stat tracker* de jornada no perfil — *nova*
+O menu/perfil exibe **estatísticas de trabalho**: corridas no total, entregas hoje, entregas
+**neste destino** e **horas trabalhadas hoje**, com uma **barra de controle de jornada**
+(meta saudável de 8h; fica âmbar perto do limite). **Por quê:** dá ao app apelo de
+acompanhamento de trabalho e, principalmente, cria um **mecanismo de controle de jornada para
+evitar overworking** — diálogo direto com o problema da Fase 1 (uberização, jornadas de 12h+,
+fadiga como fator de risco). São dados ilustrativos, sem persistência.
+
+### D20. Correções estéticas — *ajuste vs. 1ª versão*
+- Badge "AO VIVO" (e demais badges) com `white-space: nowrap` — não quebra mais em 2 linhas.
+- Botão de comando de voz movido do rodapé para a **coluna de controles à direita**, e o
+  pino de GPS do usuário subiu — eliminando a **sobreposição** entre eles.
+- Adicionado **scrim** (degradê) inferior no mapa, separando os botões flutuantes do conteúdo
+  do mapa e melhorando o contraste.
 
 ---
 
