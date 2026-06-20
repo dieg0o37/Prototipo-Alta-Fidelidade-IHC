@@ -29,6 +29,7 @@ A Fase 2 usou Figma. Na Fase 3 optou-se por um **protótipo interativo em códig
   voz — animações que frames estáticos do Figma não reproduzem.
 - Protótipo navegável de verdade (clicável) gera uma avaliação mais fiel da interação.
 - Produz screenshots limpos e um demo ao vivo para o relatório e a apresentação.
+- GenAI gera protótipos de mais alta qualidade utilizando código em vez de Figma.
 
 ### D3. Stack técnica
 **React + Vite** (estrutura e build), **CSS com custom properties** (temas dia/noite) e
@@ -75,7 +76,7 @@ no topo da tela principal.
 ### D8. Cores semânticas fixas
 Vermelho = perigo, amarelo = atenção, verde = seguro/confirmado — **constantes nos dois
 temas**. **Por quê:** restrição Semântica da Fase 1 (cores de alerta universais); manter o
-significado estável evita reaprendizado.
+significado estável evita reaprendizado. Porém, não depende exclusivamente de cores (acessibilidade para pessoas com daltonismo): alertas críticos têm também **borda piscando**, **vibração** e **símbolos de alertas**.
 
 ### D9. Hitboxes grandes e tipografia ampliada
 Botões primários ≥ **64 px**; botão de pânico ≥ **88 px**; corpo de texto ≥ 17 px.
@@ -128,17 +129,11 @@ funcionalidade garantida. Alternativa realista: captura via notificação/acessi
 sistema, a validar em fases futuras.
 
 ### D17. Dropdown de destino + resumo IA no topo (substitui a localização estática) — *nova*
-O topo do mapa deixou de mostrar a localização atual ("Barão Geraldo, Campinas" — informação
-inútil) e passou a exibir um **dropdown (aberto por padrão)** com **nome do destino**,
-endereço, **resumo por IA das ocorrências** daquele local e um *pill* "4 alertas na rota ·
+exibi um **dropdown (aberto por padrão)** com **nome do destino**, endereço, 
+**resumo por IA das ocorrências** daquele local e um *pill* "4 alertas na rota ·
 AO VIVO". **Por quê:** o que importa para o motoboy é o **destino** e seus riscos conhecidos,
 não onde ele já está; materializa de novo a "IA que resume relatos" (Fase 1) no momento mais
 útil. É recolhível para liberar o mapa quando desejado.
-
-### D18. Toggle de tema movido para o menu — *nova (ajuste vs. 1ª versão)*
-O alternador dia/noite saiu de cima do mapa e foi para **Menu → Aparência**. **Por quê:**
-troca de tema é ação ocasional; tirá-la da tela principal reforça a base **Minimalista**
-(menos controles sobre o mapa) sem perder a função.
 
 ### D19. *Stat tracker* de jornada no perfil — *nova*
 O menu/perfil exibe **estatísticas de trabalho**: corridas no total, entregas hoje, entregas
@@ -147,13 +142,6 @@ O menu/perfil exibe **estatísticas de trabalho**: corridas no total, entregas h
 acompanhamento de trabalho e, principalmente, cria um **mecanismo de controle de jornada para
 evitar overworking** — diálogo direto com o problema da Fase 1 (uberização, jornadas de 12h+,
 fadiga como fator de risco). São dados ilustrativos, sem persistência.
-
-### D20. Correções estéticas — *ajuste vs. 1ª versão*
-- Badge "AO VIVO" (e demais badges) com `white-space: nowrap` — não quebra mais em 2 linhas.
-- Botão de comando de voz movido do rodapé para a **coluna de controles à direita**, e o
-  pino de GPS do usuário subiu — eliminando a **sobreposição** entre eles.
-- Adicionado **scrim** (degradê) inferior no mapa, separando os botões flutuantes do conteúdo
-  do mapa e melhorando o contraste.
 
 ---
 
