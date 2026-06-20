@@ -5,7 +5,7 @@ import { TopBar } from '../components/ui.jsx'
    (crowdsourcing condensado para o próximo entregador). */
 const PLACES = [
   { name: 'Cond. Residencial Vila Verde', n: 12, level: 'var(--danger)', icon: ShieldAlert,
-    ai: 'IA: portaria costuma atrasar liberação; relatos de tratamento hostil à noite.' },
+    ai: 'IA: portaria costuma atrasar a liberação; relatos de tratamento hostil à noite. Use a entrada de serviço.' },
   { name: 'Av. Albino J. B. de Oliveira', n: 8, level: 'var(--warning)', icon: Droplets,
     ai: 'IA: alaga em dias de chuva forte, trecho próximo ao número 240.' },
   { name: 'Rua das Hortênsias', n: 5, level: 'var(--warning)', icon: AlertTriangle,

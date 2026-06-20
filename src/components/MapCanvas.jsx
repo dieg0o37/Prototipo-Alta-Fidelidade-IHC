@@ -1,4 +1,4 @@
-import { AlertTriangle, Droplets, ShieldAlert, UserX, Navigation } from 'lucide-react'
+import { AlertTriangle, Droplets, ShieldAlert, UserX, Navigation, Flag } from 'lucide-react'
 
 /* Mapa estilizado (sem API real). Ruas em SVG + zonas de calor + marcadores.
    `rerouted` mostra a rota alternativa desviando do ponto de risco.
@@ -46,18 +46,21 @@ export default function MapCanvas({ rerouted = false, showHeat = true }) {
 
         {/* Rota planejada (posição do usuário -> destino) */}
         {!rerouted ? (
-          <path d="M70 720 L70 400 L150 400 L150 180 L275 180 L275 60"
+          <path d="M70 690 L70 400 L150 400 L150 180 L275 180 L275 70"
             stroke="var(--info)" strokeWidth="8" fill="none"
             strokeLinecap="round" strokeDasharray="2 14" opacity="0.95" />
         ) : (
-          <path d="M70 720 L70 400 L275 400 L275 60"
+          <path d="M70 690 L70 400 L275 400 L275 70"
             stroke="var(--safe)" strokeWidth="8" fill="none"
             strokeLinecap="round" strokeDasharray="2 14" opacity="0.95" />
         )}
       </svg>
 
       {/* Posição do usuário */}
-      <Pin x={70} y={720} color="var(--info)"><Navigation size={20} fill="#fff" color="#fff" /></Pin>
+      <Pin x={70} y={690} color="var(--info)"><Navigation size={20} fill="#fff" color="#fff" /></Pin>
+
+      {/* Destino da corrida */}
+      <Pin x={275} y={72} color="var(--safe)"><Flag size={18} fill="#fff" color="#fff" /></Pin>
 
       {/* Marcadores de risco da comunidade */}
       <Pin x={150} y={180} color="var(--danger)" pulse={!rerouted}><ShieldAlert size={20} color="#fff" /></Pin>

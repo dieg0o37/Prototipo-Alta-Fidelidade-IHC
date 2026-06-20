@@ -13,7 +13,6 @@ validação por crowdsourcing e foco em acessibilidade (motoboys com deficiênci
 Requer Node.js 18+.
 
 ```bash
-cd prototipo
 npm install
 npm run dev      # abre em http://localhost:5173
 ```
@@ -27,13 +26,15 @@ Build de produção: `npm run build` · pré-visualizar build: `npm run preview`
   para pular entre as telas e capturar screenshots — **não faz parte do app**.
 - **Jornada do Lucas** (storyboard da Fase 2), na ordem:
   **Mapa → Alerta de risco → (Desviar) → Rota segura → Validação**.
-- O **toggle dia/noite** (sol/lua) fica no topo da tela do Mapa.
+- O **toggle dia/noite** (sol/lua) fica no **Menu → Aparência**.
+- O topo do mapa traz um **dropdown de destino** (aberto por padrão) com o resumo por IA das
+  ocorrências do local; o destino vem "sincronizado" da **integração iFood** (Menu).
 
 ## Telas (10)
 
 | # | Tela | Requisito atendido |
 |---|------|--------------------|
-| 1 | Mapa principal | mapa de risco em tempo real + zonas de calor |
+| 1 | Mapa principal | mapa de risco em tempo real + zonas de calor + dropdown de destino (resumo IA) |
 | 2 | Ações rápidas "+" | denúncia/voz/chat em poucos toques |
 | 3 | Denúncia por categoria | registrar ocorrência com ícones universais |
 | 4 | Comando de voz | reportar sem tirar as mãos do guidão |
@@ -42,7 +43,7 @@ Build de produção: `npm run build` · pré-visualizar build: `npm run preview`
 | 7 | Validação (crowdsourcing) | confirmar alerta com 1 toque |
 | 8 | Pânico silencioso | acionar rede de apoio sem som local |
 | 9 | Chat de emergência | mensagens pré-configuradas (def. auditiva/fala) |
-| 10 | Menu + Histórico | configurações, acessibilidade, mapa de calor, resumo por IA |
+| 10 | Menu + Histórico | estatísticas de jornada, integração iFood, tema, acessibilidade, histórico + resumo por IA |
 
 ## Capturando telas para o relatório
 

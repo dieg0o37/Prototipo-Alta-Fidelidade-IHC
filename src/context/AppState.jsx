@@ -21,6 +21,7 @@ export function AppProvider({ children }) {
   const [lastReport, setLastReport] = useState(null)
   const [routeRerouted, setRouteRerouted] = useState(false)
   const [panicActive, setPanicActive] = useState(false)
+  const [ifoodConnected, setIfoodConnected] = useState(true) // integração ativa no demo
 
   const go = useCallback((next) => {
     setSheetOpen(false)
@@ -46,6 +47,7 @@ export function AppProvider({ children }) {
     lastReport, setLastReport,
     routeRerouted, setRouteRerouted,
     panicActive, setPanicActive,
+    ifoodConnected, setIfoodConnected,
   }
   return <AppCtx.Provider value={value}>{children}</AppCtx.Provider>
 }
