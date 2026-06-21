@@ -17,29 +17,29 @@ Oliveira Caro, Kauan Aprigio Estevão, Raoniton Adriano da Silva
 ### D1. Uso de GenAI como método de prototipação
 O protótipo foi produzido com **IA generativa (Claude Code)** a partir dos requisitos das
 Fases 1 e 2. O grupo atuou como *direção de design*: definiu requisitos, restrições e
-decisões; a IA gerou o código da interface; o grupo revisou e validou cada tela.
+decisões, já IA gerou o código da interface. O grupo revisou e validou cada tela.
 **Por quê:** é o método pedido para esta fase; permite iterar rápido e converter os
 requisitos textuais diretamente em interface funcional.
 
 ### D2. Meio: protótipo CODADO (web app), não Figma — **mudança em relação à Fase 2**
 A Fase 2 usou Figma. Na Fase 3 optou-se por um **protótipo interativo em código**
 (React + Vite). **Por quê:**
-- Só código demonstra de fato a **redundância de acessibilidade** central do projeto:
+- Apenas o código demonstra de fato a **redundância de acessibilidade** central do projeto:
   bordas da tela **piscando**, **vibração** (feedback háptico) e **estado de escuta** por
   voz — animações que frames estáticos do Figma não reproduzem.
 - Protótipo navegável de verdade (clicável) gera uma avaliação mais fiel da interação.
-- Produz screenshots limpos e um demo ao vivo para o relatório e a apresentação.
+- Produz screenshots limpos e uma demo ao vivo para o relatório e a apresentação.
 - GenAI gera protótipos de mais alta qualidade utilizando código em vez de Figma.
 
 ### D3. Stack técnica
 **React + Vite** (estrutura e build), **CSS com custom properties** (temas dia/noite) e
 **lucide-react** (ícones universais). **Por quê:** stack leve, sem backend; CSS variables
-são o jeito mais limpo de alternar tema de alto contraste; lucide oferece ícones
+são o jeito mais limpo de alternar entre tema de alto contraste; lucide oferece ícones
 padronizados/universais (atende a restrição Semântica da Fase 1).
 
 ### D4. Mapa estilizado, sem API real
-O mapa é um **SVG estilizado** com ruas, zonas de calor e pinos posicionados manualmente —
-**sem Google Maps/geolocalização**. **Por quê:** é um protótipo de *interface*; integração
+O mapa é um **SVG estilizado** com ruas, zonas de calor e pinos posicionados manualmente
+**sem Google Maps/geolocalização**. **Por quê:** é um protótipo de *interface*, integração
 real de mapas não agrega à avaliação de usabilidade e adicionaria complexidade desnecessária.
 
 ### D5. Simulação de háptico e voz
@@ -70,7 +70,7 @@ imediatismo *sem* devolver a poluição visual do Modelo Eficiente.
 ### D7. Tema dia/noite (toggle de alto contraste)
 Dois temas: **claro** (legibilidade sob sol direto — cenário primário da restrição Física)
 e **escuro** (turnos noturnos, apontados na coleta da Fase 1 como pico de risco —
-noite/madrugada). **Por quê:** cobre os dois contextos reais de uso; o toggle fica visível
+noite/madrugada). **Por quê:** cobre os dois contextos reais de uso, além do toggle fica visível
 no topo da tela principal.
 
 ### D8. Cores semânticas fixas
@@ -92,7 +92,7 @@ Mapa, alerta de aproximação e pânico cabem **sem rolagem**. Distinção impor
   **pop-up transitório estilo Waze**, no canto, que **nunca bloqueia o mapa** e **some sozinho**
   se ignorado (ver D21).
 Listas longas (histórico) ficam só em telas secundárias. **Por quê:** a restrição Sintática
-da Fase 1 (sem pop-ups que atrapalhem) vale para fluxos críticos; pedir confirmação não pode
+da Fase 1 (sem pop-ups que atrapalhem) vale para fluxos críticos, assim, pedir confirmação não pode
 custar atenção de quem dirige — daí o pop-up passivo e efêmero.
 
 ### D11. Idioma pt-BR
@@ -126,11 +126,11 @@ demonstração** para dar realismo às telas — não vêm de nenhuma base real
 O menu traz **"Conectar conta iFood"**. O conceito ideal: ao aceitar uma corrida no iFood,
 o app **assume automaticamente a mesma rota**, porém sobreposta aos **alertas de segurança**
 da comunidade. No protótipo isso aparece como: integração ligada por padrão, **badge "iFood"**
-no destino e o destino já "sincronizado" no topo do mapa.
+no destino e o mesmo já "sincronizado" no topo do mapa.
 **Por quê:** elimina retrabalho (o motoboy não redigita a rota) e leva a segurança para
 dentro do fluxo real de trabalho, sem competir com a plataforma.
 **Ressalva de viabilidade (honestidade acadêmica):** depende de API/parceria com o iFood que
-**pode não existir** ou ser restrita; está modelada como *visão de produto ideal*, não como
+**pode não existir** ou ser restrita, está modelada como *visão de produto ideal*, não como
 funcionalidade garantida. Alternativa realista: captura via notificação/acessibilidade do
 sistema, a validar em fases futuras.
 
@@ -147,7 +147,7 @@ O menu/perfil exibe **estatísticas de trabalho**: corridas no total, entregas h
 (meta saudável de 8h; fica âmbar perto do limite). **Por quê:** dá ao app apelo de
 acompanhamento de trabalho e, principalmente, cria um **mecanismo de controle de jornada para
 evitar overworking** — diálogo direto com o problema da Fase 1 (uberização, jornadas de 12h+,
-fadiga como fator de risco). São dados ilustrativos, sem persistência.
+fadiga como fator de risco, além de evitar acidentes por cansaço). São dados ilustrativos, sem persistência.
 
 ### D21. Validação por crowdsourcing no estilo Waze (pop-up transitório) — *nova (mudança vs. versão anterior)*
 A validação deixou de ser uma **tela cheia que obrigava a responder** e virou um **pop-up

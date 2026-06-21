@@ -9,7 +9,40 @@ validação por crowdsourcing e foco em acessibilidade (motoboys com deficiênci
 
 ## Como rodar
 
-Requer Node.js 18+.
+Este projeto requer Node.js 18+.Caso já tenha pode ignorar essa sessão. Escolha o comando de acordo com sua distro:
+
+**Arch Linux / Manjaro**
+\`\`\`bash
+sudo pacman -S nodejs npm
+\`\`\`
+
+**Ubuntu / Debian**
+\`\`\`bash
+sudo apt update
+sudo apt install nodejs npm
+\`\`\`
+
+**Fedora**
+\`\`\`bash
+sudo dnf install nodejs npm
+\`\`\`
+
+**openSUSE**
+\`\`\`bash
+sudo zypper install nodejs npm
+\`\`\`
+
+> **Nota:** os repositórios oficiais de algumas distros (especialmente Debian/Ubuntu) podem trazer versões antigas do Node. Se `node -v` mostrar uma versão menor que 18, use o [nvm](https://github.com/nvm-sh/nvm) para instalar uma versão mais recente:
+> \`\`\`bash
+> curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
+> nvm install 18
+> \`\`\`
+
+Confirme a instalação com:
+\`\`\`bash
+node -v
+npm -v
+\`\`\`
 
 ```bash
 npm install
