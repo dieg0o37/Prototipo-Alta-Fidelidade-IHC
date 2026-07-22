@@ -1,15 +1,14 @@
-# Alerta Motoboy — Protótipo de Alta Fidelidade (Fase 3)
+# Alerta Motoboy — High-Fidelity Prototype
 
-Protótipo interativo do app de **segurança colaborativa para motoboys** da Equipe 244
-(MC750 — Construção de Interfaces Homem-Computador, IC/Unicamp).
-Inspirado no Waze, independente das plataformas de entrega, com alertas em tempo real,
-validação por crowdsourcing e foco em acessibilidade (motoboys com deficiência auditiva).
+Interactive prototype of a **crowdsourced safety app for motoboys** (motorcycle delivery
+workers), built by Team 244 for MC750 — Human-Computer Interface Design (IC/Unicamp).
+Inspired by Waze, independent from delivery platforms, with real-time alerts,
+community-driven validation, and a focus on accessibility (hearing-impaired riders as a
+first-class use case).
 
-> Decisões de design e justificativas: ver **[DECISIONS.md](./DECISIONS.md)** — é a fonte
+## Getting started
 
-## Como rodar
-
-Este projeto requer Node.js 18+.Caso já tenha pode ignorar essa sessão. Escolha o comando de acordo com sua distro:
+This project requires Node.js 18+. If you already have it, skip this section. Pick the command for your distro:
 
 **Arch Linux / Manjaro**
 ```bash
@@ -32,13 +31,13 @@ sudo dnf install nodejs npm
 sudo zypper install nodejs npm
 ```
 
-> **Nota:** os repositórios oficiais de algumas distros (especialmente Debian/Ubuntu) podem trazer versões antigas do Node. Se `node -v` mostrar uma versão menor que 18, use o [nvm](https://github.com/nvm-sh/nvm) para instalar uma versão mais recente:
+> **Note:** the official repositories of some distros (especially Debian/Ubuntu) may ship outdated Node versions. If `node -v` shows a version below 18, use [nvm](https://github.com/nvm-sh/nvm) to install a newer one:
 > ```bash
 > curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash
 > nvm install 18
 > ```
 
-Confirme a instalação com:
+Confirm the installation with:
 ```bash
 node -v
 npm -v
@@ -46,46 +45,47 @@ npm -v
 
 ```bash
 npm install
-npm run dev      # abre em http://localhost:5173
+npm run dev      # opens at http://localhost:5173
 ```
 
-Build de produção: `npm run build` · pré-visualizar build: `npm run preview`.
+Production build: `npm run build` · preview the build: `npm run preview`.
 
-## Como navegar
+## How to navigate
 
-- O app aparece dentro de uma **moldura de celular**.
-- A **barra de botões abaixo do celular** (Mapa, Alerta de risco, Rota segura, …) serve só
-  para pular entre as telas e capturar screenshots — **não faz parte do app**.
-- **Jornada do Lucas** (storyboard da Fase 2), na ordem:
-  **Mapa → Alerta de risco → (Desviar) → Rota segura → Validação** (pop-up Waze; responder é
-  opcional — some sozinho em ~6 s).
-- O **toggle dia/noite** (sol/lua) fica no **Menu → Aparência**.
-- O topo do mapa traz um **dropdown de destino** (aberto por padrão) com o resumo por IA das
-  ocorrências do local; o destino vem "sincronizado" da **integração iFood** (Menu).
+- The app is displayed inside a **phone frame**.
+- The **button bar below the phone** (Map, Risk alert, Safe route, …) is only there to
+  jump between screens and capture screenshots — **it is not part of the app**.
+- **Lucas's journey** (storyboard from Phase 2), in order:
+  **Map → Risk alert → (Detour) → Safe route → Validation** (Waze-style pop-up; answering
+  is optional — it dismisses itself after ~6 s).
+- The **day/night toggle** (sun/moon) lives in **Menu → Appearance**.
+- The top of the map shows a **destination dropdown** (open by default) with an AI-generated
+  summary of incidents at the location; the destination comes "synced" from the **iFood
+  integration** (Menu).
 
-## Telas (11)
+## Screens (11)
 
-| # | Tela | Requisito atendido |
-|---|------|--------------------|
-| 1 | Mapa principal | mapa de risco em tempo real + zonas de calor + dropdown de destino (resumo IA) |
-| 2 | Ações rápidas "+" | denúncia/voz/chat em poucos toques |
-| 3 | Denúncia por categoria | registrar ocorrência com ícones universais |
-| 4 | Comando de voz | reportar sem tirar as mãos do guidão |
-| 5 | Alerta de aproximação | notificação visual + háptica (acessibilidade) |
-| 6 | Rota alternativa | desvio de área de risco |
-| 7 | Validação (crowdsourcing) | pop-up transitório estilo Waze, some sozinho (não bloqueia) |
-| 8 | Pânico silencioso | acionar rede de apoio sem som local |
-| 9 | Chat de emergência | mensagens pré-configuradas (def. auditiva/fala) |
-| 10 | Menu + Histórico | estatísticas de jornada, integração iFood, tema, acessibilidade, histórico + resumo por IA |
-| 11 | Aviso de descanso | lembrete amigável de overworking (não força parar) |
+| # | Screen | Requirement covered |
+|---|--------|---------------------|
+| 1 | Main map | real-time risk map + heat zones + destination dropdown (AI summary) |
+| 2 | Quick actions "+" | report/voice/chat in just a few taps |
+| 3 | Report by category | log an incident using universal icons |
+| 4 | Voice command | report without taking your hands off the handlebars |
+| 5 | Proximity alert | visual + haptic notification (accessibility) |
+| 6 | Alternative route | detour around a risk area |
+| 7 | Validation (crowdsourcing) | transient Waze-style pop-up, dismisses itself (non-blocking) |
+| 8 | Silent panic | alert your support network without local sound |
+| 9 | Emergency chat | pre-configured messages (hearing/speech impairments) |
+| 10 | Menu + History | ride statistics, iFood integration, theme, accessibility, history + AI summary |
+| 11 | Rest reminder | friendly overworking reminder (doesn't force a stop) |
 
-## Capturando telas para o relatório
+## Capturing screens for the report
 
 1. `npm run dev`.
-2. Selecione a tela na barra inferior (ou siga a jornada do Lucas).
-3. Alterne dia/noite em **Menu → Aparência** para registrar os dois temas.
-4. Capture a área da **moldura do celular** (recomenda-se viewport ~460×1000).
+2. Select the screen in the bottom bar (or follow Lucas's journey).
+3. Toggle day/night in **Menu → Appearance** to capture both themes.
+4. Capture the **phone frame** area (recommended viewport ~460×1000).
 
 ## Stack
 
-React + Vite · CSS custom properties (temas) · lucide-react (ícones). Sem backend.
+React + Vite · CSS custom properties (theming) · lucide-react (icons). No backend.
